@@ -1,70 +1,44 @@
 <template>
   <div class="corpo">
+  <nav>
+      <ul>       
+          <li v-for="route in routes">
+            <router-link :to="route.path ? route.path : '/'">{{route.titulo}}</router-link>
+          </li>
+      </ul>
+    </nav>
 
-    <h1 class="centralizado">{{ titulo }}</h1>
-
-    <ul class="lista-livros">
-
-      <li class="lista-livros-item" v-for="livro in livros">
-
-        <meu-painel :titulo="livro.titulo">
-          <img class="imagem-responsiva" :src="livro.caminhoLivro" :alt="livro.titulo">
-        </meu-painel>
-
-      </li>
-    </ul>
+    <transition name="pagina">
+      <router-view></router-view>
+    </transition>
 
   </div>
 </template>
+
 <script>
 
-    import Painel from './components/shared/painel/Painel.vue';
+    import { routes }  from './routes';
 
     export default {
-
-        components: {
-
-            'meu-painel': Painel
-
-        },
-
         data() {
             return {
-                titulo: "Lista de Livros",
-                livros: []
+                routes: routes
             }
-        },
-
-        created() {
-            this.$http.get('https://dtlivraria.herokuapp.com/livros/')
-            .then(res => res.json())
-            .then(livros => this.livros = livros, err => console.log(err));
         }
     }
 </script>
 
 <style>
-    .corpo {
-        font-family: helvetic, sans-serif;
-        width: 96%;
-        magin: 0 auto;
-    }
+  .corpo {
+    font-family: Helvetica, sans-serif;
+    margin: 0 auto;
+    width: 96%;
+  }
 
-    .centralizado {
-        text-align: center;
-    }
-
-    .lista-livros {
-        list-style: none;
-    }
-
-    .lista-livros .lista-livros-item{
-        display: inline-block;
-    }
-
-    .imagem-responsiva{
-        width: 100%;
-    }
-
-
+  .pagina-enter-active, .pagina-leave-active {
+    transition: opacity .3s
+  }
+  .pagina-enter, .pagina-leave-active {
+    opacity: 0
+  }
 </style>
