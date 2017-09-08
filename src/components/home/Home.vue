@@ -43,7 +43,7 @@
         livrosComFiltro() {
          if (this.filtro) {
            let exp = new RegExp(this.filtro.trim(), 'i');
-            return this.livros.filter(livro => exp.test(livro.titulo));
+           return this.livros.filter(livro => exp.test(livro.titulo));
         } else {
             // se o campo estiver vazio, não filtramos, retornamos a lista
             return this.livros;
