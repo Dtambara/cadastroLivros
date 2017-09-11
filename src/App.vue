@@ -1,12 +1,6 @@
 <template>
   <div class="corpo">
-  <nav>
-      <ul>       
-          <li v-for="route in routes">
-            <router-link :to="route.path ? route.path : '/'">{{route.titulo}}</router-link>
-          </li>
-      </ul>
-    </nav>
+    <my-nav :routes="routes"/>    
 
     <transition name="pagina">
       <router-view></router-view>
@@ -18,8 +12,11 @@
 <script>
 
     import { routes }  from './routes';
-
+    import Navbar from './components/shared/navbar/NavbarHorizontal.vue'
     export default {
+        components: {
+            'my-nav': Navbar
+        },
         data() {
             return {
                 routes: routes

@@ -1,7 +1,6 @@
 <template>
   <div>
 
-    <h1 class="centralizado">Listagem de Livros</h1>
 
     <input type="search"  v-on:input="filtro = $event.target.value" class="filtro" placeholder="filtre pelo título da foto">
 
