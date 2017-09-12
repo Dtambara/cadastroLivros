@@ -4,7 +4,7 @@
 
   <b-nav-toggle target="nav_collapse"></b-nav-toggle>
 
-  <b-navbar-brand href="/">Listagem de Livros</b-navbar-brand>
+   <router-link class="navbar-brand" to="/">Livraria</router-link>
 
   <b-collapse is-nav id="nav_collapse">
 
