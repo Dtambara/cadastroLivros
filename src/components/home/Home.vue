@@ -12,7 +12,7 @@
         <meu-painel :titulo="livro.titulo">
           <imagem-responsiva :url="livro.caminhoLivro" :titulo="livro.titulo"/>
           <botao class="button-fixed" size="sm" variant="primary" texto="Alterar" path="/cadastro"/>    
-          <botao class="button-fixed" size="sm" variant="danger" texto="Remover" @click.native="remove(livro)"/>    
+          <botao class="button-fixed" size="sm" variant="danger" texto="Remover" @removerLivro="remove(livro)"/>    
         </meu-painel>
 
       </li>
@@ -44,7 +44,7 @@
         
         methods: {
             remove(livro) {
-                confirm("Realmente deseja remover o livro: " + livro.titulo);
+                alert('Livro ' + livro.titulo + ' removido.')
             }    
         },
 
@@ -67,7 +67,7 @@
     }
 </script>
 
-<style>
+<style scoped>
 
     .centralizado {
         text-align: center;
